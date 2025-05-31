@@ -9,25 +9,31 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      
     }
 
     body {
-      background: #70c5ce;
+      background: #71f6be;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+     
     }
 
     canvas {
-      border: 2px solid #000;
-      background-color: #fff;
+      border: 2px solid #023c1c;
+      background-color: #550404;
     }
   </style>
 </head>
 <body>
   <canvas id="idk"></canvas>
   <script>
+    let userInput = prompt("Enter your name:");
+alert("Hello, " + userInput + "!");
+let gl = prompt("Enter GAME  LEVEL(1,2,3):");
+
     const canvas = document.getElementById("idk");
     const ctx = canvas.getContext("2d");
 
@@ -39,10 +45,20 @@
       y: 200,
       width: 40,
       height: 30,
-      gravity: 0.6,
+      gravity: 0.5, 
       lift: -10,
       velocity: 0
     };
+
+    if (gl === "1") {
+      bird.gravity = 0.5;
+    } else if (gl === "2") {
+      bird.gravity = 0.7;
+    } else if (gl === "3") {
+      bird.gravity = 0.9;
+    } else {
+      bird.gravity = 0.5;
+    }
 
     let pipes = [];
     let frame = 0;
@@ -120,9 +136,9 @@
       if (gameOver) {
         ctx.fillStyle = "black";
         ctx.font = "40px sans-serif";
-        ctx.fillText("Game Over!", 100, 250);
+        ctx.fillText("Game  Over!", 100, 250);
         ctx.font = "20px sans-serif";
-        ctx.fillText("Refresh to play again", 110, 290);
+        ctx.fillText("Refresh to play again score:"+score, 110, 290);
         return;
       }
 
